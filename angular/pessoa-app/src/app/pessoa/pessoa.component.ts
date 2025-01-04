@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class PessoaComponent {
   pessoa: any = {};
   isSelected: boolean = false;
-/*
+
   constructor(private http: HttpClient) {}
 
   incluir() {
@@ -41,5 +41,4 @@ export class PessoaComponent {
       alert(`O peso ideal é: ${pesoIdeal}`);
     });
   }
-  */
 }

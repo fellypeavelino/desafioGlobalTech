@@ -1,20 +1,45 @@
-<div>teste
-    <!--form #formPessoa="ngForm">
-      <input type="text" name="nome" placeholder="Nome" [(ngModel)]="pessoa.nome" required />
-      <input type="date" name="dataNascimento" [(ngModel)]="pessoa.dataNascimento" required />
-      <input type="text" name="cpf" placeholder="CPF" [(ngModel)]="pessoa.cpf" required />
-      <select name="sexo" [(ngModel)]="pessoa.sexo" required>
+<!-- pessoa.component.html -->
+<div class="container mt-4">
+  <form #formPessoa="ngForm">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome</label>
+      <input id="nome" type="text" name="nome" class="form-control" [(ngModel)]="pessoa.nome" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+      <input id="dataNascimento" type="date" name="dataNascimento" class="form-control" [(ngModel)]="pessoa.dataNascimento" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="cpf" class="form-label">CPF</label>
+      <input id="cpf" type="text" name="cpf" class="form-control" [(ngModel)]="pessoa.cpf" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="sexo" class="form-label">Sexo</label>
+      <select id="sexo" class="form-select" [(ngModel)]="pessoa.sexo" name="sexo" required>
         <option value="MASCULINO">Masculino</option>
         <option value="FEMININO">Feminino</option>
       </select>
-      <input type="number" name="altura" placeholder="Altura" [(ngModel)]="pessoa.altura" required />
-      <input type="number" name="peso" placeholder="Peso" [(ngModel)]="pessoa.peso" required />
-  
-      <button (click)="incluir()">Incluir</button>
-      <button (click)="alterar()" [disabled]="!isSelected">Alterar</button>
-      <button (click)="excluir()" [disabled]="!isSelected">Excluir</button>
-      <button (click)="pesquisar()">Pesquisar</button>
+    </div>
+
+    <div class="mb-3">
+      <label for="altura" class="form-label">Altura</label>
+      <input id="altura" type="number" name="altura" class="form-control" [(ngModel)]="pessoa.altura" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="peso" class="form-label">Peso</label>
+      <input id="peso" type="number" name="peso" class="form-control" [(ngModel)]="pessoa.peso" required />
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary" (click)="incluir()">Incluir</button>
+      <button type="button" class="btn btn-warning" (click)="alterar()">Alterar</button>
+      <button type="button" class="btn btn-danger" (click)="excluir()">Excluir</button>
+      <button type="button" class="btn btn-info" (click)="pesquisar()">Pesquisar</button>
       <button (click)="calcularPesoIdeal()" [disabled]="!isSelected">Calcular Peso Ideal</button>
-    </form -->
+    </div>
+  </form>
 </div>
-  

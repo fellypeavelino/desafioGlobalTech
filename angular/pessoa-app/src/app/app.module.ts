@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module'; // Certifique-se de que está importado
 import { AppComponent } from './app.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
+import { HttpClientModule } from '@angular/common/http'; // Importar o HttpClientModule
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PessoaComponent } from './pessoa/pessoa.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule // Registrar o HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
