@@ -24,7 +24,7 @@ export class PessoaComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.carrgerarDados()
+    this.carrgerarDados();
   }
 
   carrgerarDados(){
@@ -37,18 +37,21 @@ export class PessoaComponent implements OnInit {
   incluir() {
     this.http.post('/api/pessoas', this.pessoa).subscribe((response) => {
       alert('Pessoa incluída com sucesso!');
+      this.carrgerarDados();
     });
   }
 
   alterar() {
     this.http.put(`/api/pessoas/${this.pessoa.id}`, this.pessoa).subscribe((response) => {
       alert('Pessoa alterada com sucesso!');
+      this.carrgerarDados();
     });
   }
 
   excluir() {
     this.http.delete(`/api/pessoas/${this.pessoa.id}`).subscribe(() => {
       alert('Pessoa excluída com sucesso!');
+      this.carrgerarDados();
     });
   }
 
@@ -62,6 +65,7 @@ export class PessoaComponent implements OnInit {
   calcularPesoIdeal() {
     this.http.get(`/api/pessoas/${this.pessoa.id}/peso-ideal`).subscribe((pesoIdeal) => {
       alert(`O peso ideal é: ${pesoIdeal}`);
+      this.carrgerarDados();
     });
   }
 
