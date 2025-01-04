@@ -8,6 +8,7 @@ import com.GlobalTech.GlobalTech.dto.PessoaDTO;
 import com.GlobalTech.GlobalTech.entity.Pessoa;
 import com.GlobalTech.GlobalTech.service.PessoaService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -55,5 +56,10 @@ public class PessoaController {
         PessoaDTO pessoaDto = pessoaService.pesquisar(id);
         double pesoIdeal = pessoaService.calcularPesoDtoIdeal(pessoaDto);
         return ResponseEntity.ok(pesoIdeal);
+    }
+    
+    @GetMapping("listar-todos")
+    public List<Pessoa> listarPessoas() {
+        return pessoaService.listarTodos();
     }
 }

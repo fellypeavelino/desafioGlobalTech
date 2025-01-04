@@ -1,15 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface Pessoa {
+  id: number;
+  nome: string;
+  dataNascimento: string;
+  cpf: string;
+  sexo: string;
+  altura: number;
+  peso: number;
+}
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.component.html',
+  styleUrls: ['./pessoa.component.css']
 })
-export class PessoaComponent {
+export class PessoaComponent implements OnInit {
   pessoa: any = {};
   isSelected: boolean = false;
+  pessoas: Pessoa[] = [];
+  pessoaSelecionada: Pessoa | null = null;
 
   constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.carrgerarDados()
+  }
+
+  carrgerarDados(){
+    this.http.get<Pessoa[]>('/api/pessoas/listar-todos')
+    .subscribe(data => {
+      this.pessoas = data;
+    });
+  }
 
   incluir() {
     this.http.post('/api/pessoas', this.pessoa).subscribe((response) => {
@@ -40,5 +63,10 @@ export class PessoaComponent {
     this.http.get(`/api/pessoas/${this.pessoa.id}/peso-ideal`).subscribe((pesoIdeal) => {
       alert(`O peso ideal é: ${pesoIdeal}`);
     });
+  }
+
+  selecionarPessoa(pessoa: Pessoa): void {
+    this.pessoaSelecionada = pessoa;
+    this.pessoa = pessoa;
   }
 }

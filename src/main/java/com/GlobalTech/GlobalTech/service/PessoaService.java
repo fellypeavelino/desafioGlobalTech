@@ -8,6 +8,7 @@ import com.GlobalTech.GlobalTech.dto.PessoaDTO;
 import com.GlobalTech.GlobalTech.entity.Pessoa;
 import com.GlobalTech.GlobalTech.enumerated.Sexo;
 import com.GlobalTech.GlobalTech.repository.PessoaRepository;
+import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,4 +70,7 @@ public class PessoaService {
         return new ModelMapper().map(pessoa, PessoaDTO.class);
     }
     
+    public List<Pessoa> listarTodos() {
+        return pessoaRepository.findAll();
+    }
 }
