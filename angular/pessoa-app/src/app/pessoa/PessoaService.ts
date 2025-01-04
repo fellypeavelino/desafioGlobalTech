@@ -11,7 +11,7 @@ export class PessoaService {
 
   // Método para obter o token (substitua pelo seu mecanismo de autenticação real)
   private getAuthorizationToken(): string {
-    return 'seu-token-aqui'; // Substitua pelo token real
+    return 'globalTech'; // Substitua pelo token real
   }
 
   // Configurar os cabeçalhos com o Authorization
