@@ -7,12 +7,10 @@ Este projeto exemplifica uma aplicação CRUD utilizando Angular no frontend e S
 ### Frontend
 - **Angular**: Framework para criação de interfaces web reativas.
 - **Bootstrap**: Biblioteca CSS para estilização responsiva e componentes pré-definidos.
-- **PrimeNG**: Biblioteca de componentes visuais para Angular.
 - **TypeScript**: Linguagem principal para desenvolvimento no Angular.
 
 ### Backend
 - **Spring Boot**: Framework Java para criação de aplicações back-end.
-- **Spring Security**: Biblioteca para autenticação e autorização.
 - **H2 Database**: Banco de dados em memória para testes rápidos.
 - **Maven**: Ferramenta de gerenciamento de dependências e build.
 
