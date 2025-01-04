@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pessoa } from './pessoa.model';
 
@@ -9,6 +9,19 @@ import { Pessoa } from './pessoa.model';
 export class PessoaService {
   private apiUrl = '/api/pessoas'; // URL do backend
 
+  // Método para obter o token (substitua pelo seu mecanismo de autenticação real)
+  private getAuthorizationToken(): string {
+    return 'seu-token-aqui'; // Substitua pelo token real
+  }
+
+  // Configurar os cabeçalhos com o Authorization
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.getAuthorizationToken()}`,
+    });
+  }
+
   constructor(private http: HttpClient) { }
 
   /**
@@ -16,7 +29,9 @@ export class PessoaService {
    * @returns Observable com a lista de pessoas.
    */
   listarPessoas(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${this.apiUrl}/listar-todos`);
+    return this.http.get<Pessoa[]>(`${this.apiUrl}/listar-todos`, {
+      headers: this.getHeaders(),
+    });
   }
 
   /**
@@ -25,7 +40,9 @@ export class PessoaService {
    * @returns Observable com a pessoa criada.
    */
   salvarPessoa(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.post<Pessoa>(this.apiUrl, pessoa);
+    return this.http.post<Pessoa>(this.apiUrl, pessoa, {
+      headers: this.getHeaders(),
+    });
   }
 
   /**
@@ -34,7 +51,9 @@ export class PessoaService {
    * @returns Observable com a pessoa atualizada.
    */
   atualizarPessoa(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.put<Pessoa>(`${this.apiUrl}/${pessoa.id}`, pessoa);
+    return this.http.put<Pessoa>(`${this.apiUrl}/${pessoa.id}`, pessoa, {
+      headers: this.getHeaders(),
+    });
   }
 
   /**
@@ -43,7 +62,9 @@ export class PessoaService {
    * @returns Observable sem retorno (void).
    */
   deletarPessoa(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, {
+      headers: this.getHeaders(),
+    });
   }
 
   /**
@@ -52,10 +73,14 @@ export class PessoaService {
    * @returns Observable sem retorno (void).
    */
   procurarPessoa(id: number): Observable<Pessoa> {
-    return this.http.get<Pessoa>(`${this.apiUrl}/${id}`);
+    return this.http.get<Pessoa>(`${this.apiUrl}/${id}`, {
+      headers: this.getHeaders(),
+    });
   }
 
   executaCalculo(id: number) {
-    return this.http.get(`${this.apiUrl}/${id}/peso-ideal`);
+    return this.http.get(`${this.apiUrl}/${id}/peso-ideal`, {
+      headers: this.getHeaders(),
+    });
   }
 }
